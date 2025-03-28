@@ -10,7 +10,6 @@ class HealthCheckControllerTest extends WebTestCase
 {
     public function testHealthCheckEndpoint(): void
     {
-        $this->markTestSkipped();
         $client = static::createClient();
         $client->request('GET', '/health');
 
