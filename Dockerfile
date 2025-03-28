@@ -6,7 +6,7 @@ RUN apk add --no-cache \
     zip \
     unzip
 
-RUN docker-php-ext-install pdo_pgsql
+RUN docker-php-ext-install pdo_pgsql sockets
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
