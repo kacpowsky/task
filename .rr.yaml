@@ -1,0 +1,22 @@
+version: "2.7"
+
+server:
+  command: "php public/index.php"
+  env:
+    - APP_RUNTIME: Baldinof\RoadRunnerBundle\Runtime\Runtime
+
+http:
+  address: "0.0.0.0:8080"
+  middleware: ["static"]
+  static:
+    dir: "public"
+    forbid: [".php", ".htaccess"]
+  pool:
+    num_workers: 4
+    max_jobs: 64
+
+logs:
+  mode: production
+  channels:
+    http:
+      level: info
