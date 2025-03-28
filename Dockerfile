@@ -14,9 +14,14 @@ COPY --from=ghcr.io/roadrunner-server/roadrunner:2.12.3 /usr/bin/rr /usr/local/b
 
 WORKDIR /app
 
+COPY composer.json composer.lock ./
+
+RUN composer update --no-scripts --no-autoloader
+RUN composer install --no-scripts --no-autoloader
+
 COPY . .
 
-RUN composer install --optimize-autoloader
+RUN composer dump-autoload --optimize
 
 RUN chmod +x /usr/local/bin/rr
 
