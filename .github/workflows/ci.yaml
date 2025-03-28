@@ -47,8 +47,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install --prefer-dist --no-progress
           composer update baldinof/roadrunner-bundle --with-dependencies
+          composer install --prefer-dist --no-progress
 
       - name: Static analysis
         run: composer stan
